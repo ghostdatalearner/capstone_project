@@ -1,0 +1,63 @@
+---
+title: "JHU_DS_MilestoneReport"
+author: "Ghostdatalearner"
+date: "17/03/2015"
+output: html_document
+---
+
+# Introduction
+This document is a report on the preliminary analysis of text source files with the final goal of building a word prediction application. It is part of the capstone project of [John Hopkins University Data Specialization series at Coursera<https://www.coursera.org/specialization/jhudatascience/>. 
+
+# Executive Report
+
+# Environment and Data
+Analysis has been performed on a personal computer running Ubuntu 14.04LTS,
+
+The data set is provided by SwiftKey and was downloaded from <https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip>. It contains twelve files, with samples of texts in Finnish, German, English and Russian taken from Twitter, news services and blogs. We have worked with the English files.
+
+## Raw Data Summary
+These are the statistics of the three raw files, that we have got with the shell commands ls -l,  wc -l and wc -w
+
+```html
+File                Size (bytes)         Lines              Words
+=======================================================================
+en_US.blogs.txt     210160014             899288           37334114
+en_US.news.txt      205811889            1010242           34365936
+en_US.twitter.txt   167105338            2360148           30359804
+
+```
+
+
+```{r, echo=FALSE}
+library(ggplot2)
+library("R.utils")
+options(warn=-1)
+```
+
+## Sampling
+As files are rather heavy, we decided to work with a representative sample to make the exploratory analysis. We pick at randmon a 20% of the lines of each file.
+
+```{r}
+set.seed(1234)
+#filename <- c("en_US.twitter.txt","en_US.news.txt","en_US.blogs.txt")
+filename <- c("en_US.news.txt")
+sampletext <- c()
+for (j in filename)
+{
+  cl <- countLines(j)
+  sampleindex <- sample(seq(1,cl),round(0.02*cl))
+  print(paste("file:",j," Number of lines:",cl))
+  con <- file(description=j, open="r")
+  for(i in 1:cl) {
+    tmp <- readLines(con, n=1)
+    if (length(which(sampleindex == i))>0)
+      sampletext <- c(sampletext,tmp)   
+  }
+  close(con)
+}
+```
+
+
+# Expl
+
+
