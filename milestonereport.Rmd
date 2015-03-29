@@ -1,7 +1,7 @@
 ---
 title: "JHU_DS_MilestoneReport"
 author: "Ghostdatalearner"
-date: "17/03/2015"
+date: "25/03/2015"
 output: html_document
 ---
 
@@ -64,7 +64,7 @@ filename <- c("en_US.twitter.txt","en_US.news.txt","en_US.blogs.txt")
 clines <- c(2360148,1010242,899288)
 sampletext <- c()
 prof_words <- read.table("en", sep="\n")
-samplesize <- 100
+samplesize <- 10000
 top_cut <- 30
 
 read_file <- function(fn)
@@ -171,3 +171,7 @@ d3
 * We found problems dealing with memory size when trying to increase the sample size, so a more efficient way to read the raw files must be designed.
 * We will use the Katz' back-off and will test different smoothing approaches. We will choose that more efficient in terms of memory and CPU usage, having in mind that the application will be deployed in the Shinyapps server.
 * Exploratory analysis shows the high frequence of stop words in the top positions of n-gram tables. Filtering them yielded a quite different table for unigrams, but it is not possible to strip them all without losing prediction accuracy.
+
+### Backup information
+
+The source of this markdown file may be found at <https://github.com/ghostdatalearner/capstone_project>
